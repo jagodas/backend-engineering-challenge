@@ -12,7 +12,8 @@ def main():
 
     events = read_events(args.input_file)
 
-    print(f"Loaded {len(events)} events")
+    for e in events:
+        print(e)
 
 if __name__ == "__main__":
     main()
