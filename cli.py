@@ -1,5 +1,6 @@
 import argparse
-from processor import read_events
+import json
+from processor import read_events, calculate_moving_average
 
 
 def main():
@@ -12,8 +13,13 @@ def main():
 
     events = read_events(args.input_file)
 
-    for e in events:
-        print(e)
+    results = calculate_moving_average(
+        events,
+        args.window_size,
+    )
+
+    for result in results:
+        print(json.dumps(result))
 
 if __name__ == "__main__":
     main()
